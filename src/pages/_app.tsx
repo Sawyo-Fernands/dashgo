@@ -6,7 +6,7 @@ import { Theme } from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps ) {
   return (
-    <ChakraProvider resetCSS theme={Theme}>
+    <ChakraProvider  theme={Theme}>
       <Component {...pageProps} />
     </ChakraProvider>
   )
