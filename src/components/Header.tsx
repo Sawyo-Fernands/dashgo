@@ -1,5 +1,5 @@
-import { Flex ,Input,Text,Icon } from "@chakra-ui/react"
-import { RiSearchLine } from 'react-icons/ri'
+import { Flex ,Input,Text,Icon, HStack, Box ,Avatar } from "@chakra-ui/react"
+import { RiNotificationLine, RiSearchLine, RiUserAddLine } from 'react-icons/ri'
 
 export function Header(){
     return(
@@ -8,15 +8,15 @@ export function Header(){
         >
            
            <Text 
-           fontSize={'3xl'} fontWeight='bold' letterSpacing={'tight'} w={64}
+           fontSize={'3xl'} fontWeight='bold' letterSpacing='tight' w={64}
            >
                dashgo
-               <Text as='span' ml={1} color={'purple.500'}>
+               <Text as='span' ml={1} color='purple.500'>
                    .
                </Text>
            </Text>
             <Flex
-            as='label' flex={1} py={4} px={8} ml={6} mx={400} borderRadius='full'
+            as='label' flex={1} py={4} px={8} ml={6} maxWidth={400} borderRadius='full'
             alignSelf='center' color={'gray.200'} position='relative' bg={'gray.800'}
             alignItems='center'
             >
@@ -25,6 +25,24 @@ export function Header(){
             px={4} mr={4}
             />
             <Icon as={RiSearchLine} fontSize={'20'}/>
+            </Flex>
+
+            <Flex align={'center'} marginLeft='auto'>
+             <HStack spacing='8' mx={'8'} pr='8' py='1' color='gray.300' borderRightWidth={1} borderRightColor='gray.700'>
+                <Icon as={RiNotificationLine} fontSize='20'/>
+                <Icon as={RiUserAddLine} fontSize='20'/>
+             </HStack>
+             <Flex align='center'>
+                <Box mr='4' textAlign={'right'}>
+                    <Text>
+                        sawyo fernands
+                    </Text>
+                    <Text color='gray.300' fontSize='small'>
+                        sawyo@hotmail.com
+                    </Text>
+                </Box>
+                <Avatar size='md' name="sawyo fernands" />
+             </Flex>
             </Flex>
         </Flex>
 
