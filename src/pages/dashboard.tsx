@@ -1,6 +1,6 @@
 import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import { Header } from "../components/Header";
-import { SideBar } from "../components/Sidebar";
+import { SideBar } from "../components/SideBar";
 import dynamic from "next/dynamic"
 import { ApexOptions } from "apexcharts";
 
