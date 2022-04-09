@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
-import { Pagination } from "../../components/Pagination/page";
+import { Pagination } from "../../components/Pagination";
 import { SideBar } from "../../components/SideBar";
 
 
@@ -18,7 +18,7 @@ export default function UserList(){
                     <Flex mb={8} justify='space-between' alignItems={'center'}>
                         <Heading size={'lg'} fontWeight='normal'>Usuários</Heading>
                         <Button as={'a'} size='sm' fontSize={'15'} 
-                        colorScheme='purple' leftIcon={<Icon as={RiAddLine}/>} >
+                        colorScheme='purple' leftIcon={<Icon as={RiAddLine}/>} cursor='pointer'>
                             Criar novo
                             </Button>
                     </Flex>
@@ -53,7 +53,7 @@ export default function UserList(){
                                 </Td>
                                 <Td>
                                 <Button as={'a'} size='sm' fontSize={'14'} 
-                                 colorScheme='blue'  leftIcon={<Icon as={RiPencilLine}/>}>
+                                 colorScheme='pink'  leftIcon={<Icon as={RiPencilLine}/>} cursor='pointer'>
                                     Editar
                                 </Button>
                                 </Td>
@@ -73,7 +73,7 @@ export default function UserList(){
                                 </Td>
                                 <Td>
                                 <Button as={'a'} size='sm' fontSize={'14'} 
-                                 colorScheme='blue'  leftIcon={<Icon as={RiPencilLine}/>}>
+                                 colorScheme='pink'  leftIcon={<Icon as={RiPencilLine}/>} cursor='pointer'>
                                     Editar
                                 </Button>
                                 </Td>
