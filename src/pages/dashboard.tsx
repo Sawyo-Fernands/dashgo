@@ -69,7 +69,7 @@ export default function Dashboard(){
                 <SideBar/>
                 <SimpleGrid flex='1' gap='4' minChildWidth='320px' alignItems='flex-start'>
                     <Box
-                    padding='8'
+                    padding={['4','8']}
                     bg='gray.800'
                     borderRadius='8'
                     pb='4'
