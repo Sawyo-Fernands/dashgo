@@ -17,11 +17,15 @@ interface FormData{
 
 export default function SignIn() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors,isSubmitting } } = useForm<FormData>({
     resolver: yupResolver(schema)
   });
   
-  const onSubmit = handleSubmit(data => console.log(data));
+  const onSubmit = handleSubmit(async (data) => {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+        console.log(data);
+  });
 
   return (
     <Flex w='100%' height='100vh' alignItems="center" justifyContent={'center'} >
@@ -29,17 +33,13 @@ export default function SignIn() {
       borderRadius={8} flexDirection="column" onSubmit={onSubmit}>
 
         <Stack spacing={4}>
-          <Input label='Usuário'  name="email" type='email' {...register('email')}/>   
-          <Text color={'red.500'}>
-          {errors.email?.message}
-            </Text> 
-          <Input label='Senha' name='password' type='password' {...register('password')}/> 
-          <Text color={'red.500'}>
-          {errors.password?.message}
-            </Text>
+          <Input label='Usuário'  name="email" type='email' {...register('email')} error={errors.email}/>   
+          
+          <Input label='Senha' name='password' type='password' {...register('password')} error={errors.email}/> 
+          
         </Stack>
        
-        <Button type='submit' mt={6} colorScheme="purple" >Entrar</Button>
+        <Button type='submit' mt={6} colorScheme="purple" isLoading={isSubmitting}>Entrar</Button>
       </Flex>
     </Flex>
   )
