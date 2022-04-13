@@ -13,9 +13,22 @@ export default function UserList(){
     const { data,isLoading,error }=useQuery('users',async ()=>{
 
     const response=   await fetch('http://localhost:3000/api/users')
-     const data=  await response.json()     
+     const data=  await response.json()   
+     
+     const users=data.users.map(user=>{
+         return{
+             id:user.id,
+             name:user.name,
+             email:user.email,
+             createdAt:new Date(user.createdAt).toLocaleDateString('pt-BR',{
+                 day:'2-digit',
+                 month:'long',
+                 year:'numeric'
+             })
+         }
+     })
 
-       return data
+       return users
     })
 
 
@@ -72,18 +85,21 @@ export default function UserList(){
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
+                            {
+                                data.map(user=>(
+                                    <>
+                                <Tr key={user.id}>
                                 <Td  px={['4','4','6']}>
                                 <Checkbox colorScheme={'purple'} _active={{border:'none',outline:'none'}}/>
                                 </Td>
                                 <Td>
                                     <Box>
-                                        <Text fontWeight={'bold'}>Sawyo fernands</Text>
-                                        <Text fontWeight={'normal'} fontSize='small' color={'gray.300'}>sawyo@hotmail.com</Text>
+                                        <Text fontWeight={'bold'}>{user.name}</Text>
+                                        <Text fontWeight={'normal'} fontSize='small' color={'gray.300'}>{user.email}</Text>
                                     </Box>
                                 </Td>
                                {isWideVersion &&  <Td>
-                                    08 de Abril, 2022
+                            {user.createdAt}
                                 </Td>}
                                 <Td>
                                {isWideVersion && <Button as={'a'} size='sm' fontSize={'14'} 
@@ -92,26 +108,10 @@ export default function UserList(){
                                 </Button>}
                                 </Td>
                             </Tr>
-                            <Tr>
-                                <Td  px={['4','4','6']}>
-                                <Checkbox colorScheme={'purple'} _active={{border:'none',outline:'none'}}/>
-                                </Td>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight={'bold'}>Sawyo fernands</Text>
-                                        <Text fontWeight={'normal'} fontSize='small' color={'gray.300'}>sawyo@hotmail.com</Text>
-                                    </Box>
-                                </Td>
-                                {isWideVersion && <Td>
-                                    08 de Abril, 2022
-                                </Td>}
-                                <Td>
-                               {isWideVersion && <Button as={'a'} size='sm' fontSize={'14'} 
-                                 colorScheme='pink'  leftIcon={<Icon as={RiPencilLine}/>} cursor='pointer'>
-                                    Editar
-                                </Button>}
-                                </Td>
-                            </Tr>
+                                    </>
+                                ))
+                            }
+                            
                         </Tbody>
                         
                         
