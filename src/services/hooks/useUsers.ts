@@ -7,8 +7,7 @@ type User={
         name:string;
         email:string;
         createdAt:string;
-       
-   
+    
 }
 
 type GetUsersResponse = {
